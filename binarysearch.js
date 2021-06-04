@@ -2,24 +2,24 @@
 // Eliminate half of the remaining elements at a time
 // Binary search works on SORTED ARRAYS ONLY
 
-function binarySearch(array, value) {
+const binarySearch = (arr, val) => {
     let start = 0;
-    let end = array.length - 1;
-    let middle = Math.floor((start + end) /2);
-    while (array[middle] !== value && start <= end) {
-        if (value < array[middle]) {
+    let end = arr.length - 1;
+    while (start <= end) {
+        let middle = Math.floor((start + end) / 2);
+        if (arr[middle] === val) {
+            console.log(middle);
+            return middle;
+        } 
+        if (arr[middle] > val) {
             end = middle - 1;
         } else {
             start = middle + 1;
         }
+
         middle = Math.floor((start + end) / 2)
     }
-    if (array[middle] === value) {
-        console.log(middle);
-        return middle;
-    }
-
-    console.log(-1);
+    console.log(-1)
     return -1;
 }
 
